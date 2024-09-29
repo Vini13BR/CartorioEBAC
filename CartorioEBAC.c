@@ -21,6 +21,7 @@ int main(){
 		printf("\t1 - Registrar Nomes\n");
 		printf("\t2 - Consultar Nomes\n");
 		printf("\t3 - Excluir Nomes\n\n");
+		printf("\t4 - Fechar Aplicativo\n\n");
 		printf("Opção: ");
 		scanf("%d", &opcao); // ARMAZENAR OPÇÃO ESCOLHIDA
 	
@@ -40,6 +41,12 @@ int main(){
 			//	MENU PARA EXCLUSÃO DE NOMES
 			case 3:
 			exclusao();
+			break;
+			
+			//FUNÇÃO DE FECHAR O APP
+			case 4:
+			printf("Fechando Aplicativo");
+			return 0;
 			break;
 			
 			//CASO ESCOLHA ALGUMA OPÇÃO NÃO CORRESPONDENTE
