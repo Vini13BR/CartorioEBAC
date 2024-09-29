@@ -63,6 +63,17 @@ int registro(){
 
 //FUNÇÂO DE REGISTRO DE NOMES
 	
+	//CRIANDO ARQUIVO PARA LISTAR NOMES	
+	FILE *arq;
+	arq = fopen("ListaNomes","r");
+	
+	//VERIFICANDO SE JÁ EXISTE
+	if(arq == NULL){
+		arq = fopen("ListaNomes", "w");
+		fprintf(arq, "Esses são os Cadastrados:\n");
+		fclose(arq);
+	}
+	\
 	//Variaveis que serão coletadas
 	char arquivo[40];
 	char cpf[40];
@@ -94,17 +105,37 @@ int registro(){
 	fprintf(file,cpf); // salvar o valor da variavel
 	fclose(file); // fecha o arquivo
 	
+	//Salvando CPF PARA LISTAGEM
+	arq = fopen("ListaNomes", "a");
+	fprintf(arq, "\nCPF: ");
+	fprintf(arq, cpf);
+	fclose(arq);
+	
+	
 	// armazenando NOME
 	file = fopen(arquivo, "a"); //Atualizar informações do arquivo
 	fprintf(file, "\nO nome é: ");
 	fprintf(file,nome);
 	fclose(file);
 	
+	//SALVANDO NOME PARA LISTAGEM
+	arq = fopen("ListaNomes", "a");
+	fprintf(arq, "\nNOME: ");
+	fprintf(arq, nome);
+	fclose(arq);
+	
 	// Armazenando SOBRENOME
 	file = fopen(arquivo, "a"); 
 	fprintf(file, " ");//espaço entre o nome e sobrenome
 	fprintf(file,sobrenome);
 	fclose(file);
+	
+	//SALVANDO SOBRENOME PARA LISTAGEM
+	arq = fopen("ListaNomes", "a");
+	fprintf(arq, " ");
+	fprintf(arq, sobrenome);
+	fprintf(arq, "\n");
+	fclose(arq);
 		
 	// Armazenando CARGO
 	file = fopen(arquivo, "a"); 
@@ -122,6 +153,7 @@ int consulta(){
 	
 	char cpf[40];
 	char conteudo[200];
+
 	
 	printf("Digite o CPF a ser consultado: ");
 	scanf("%s",cpf);
@@ -147,8 +179,16 @@ int exclusao(){
 	//FUNÇÃO EXCLUSÃO DE NOMES
 	
 	char cpf[40];
+	char ListaNomes[999];
 	
-	printf("Digite CPF do usuário a ser deletado: ");
+	FILE *arq;
+	arq = fopen("ListaNomes","r");
+
+	while(fgets(ListaNomes, 999, arq) != NULL){
+		printf("%s",ListaNomes);
+	}
+	
+	printf("\n\nDigite CPF do usuário a ser deletado: ");
 	scanf("%s",cpf);
 	
 	
