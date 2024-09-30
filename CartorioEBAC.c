@@ -11,9 +11,9 @@ int main(){
 	//FUNÇÃO E TELA INICIAL
 	int opcao=0; //Criando variavél
 	int loop=1;
-	char senhadigitada[30] = "a";
+	char senhadigitada[30] = "a"; //Variavel que armazena a senha
 	
-	
+	//Looping para verificar se a senha digitada esta correta
 	while(1){
 		system("cls"); //LIMPAR TELA
 		
@@ -21,12 +21,17 @@ int main(){
 		printf("Login de adminstrados\n\nDigite a sua senha: ");
 		scanf("%s", senhadigitada);
 		
-		int	comparacao = strcmp(senhadigitada, "admin");
+		int	comparacao = strcmp(senhadigitada, "admin"); // atribuindo uma variavel que compara se a senha digitada é igual a admin
 		
+		// caso a senha digitada seja correta retorna um valor 0, neste caso quebrando o looping e liberando para a tela
 		if (comparacao == 0) {
-			printf("Acesso Liberado");
+			system("cls");
+			printf("\n\tAcesso Liberado\n");
+			system("pause");
 			break;
-		}else{
+		}
+		// caso a senha seja incorreta o looping não é quebrando e retorna a verificação
+		else{
 			printf("Acesso Negado\n");
 			system("pause");
 		}
