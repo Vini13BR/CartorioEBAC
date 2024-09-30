@@ -5,11 +5,34 @@
 
 
 int main(){
-	//FUNÇÃO E TELA INICIAL
+		setlocale(LC_ALL, "Portuguese"); //setando a linguagem
 	
+	
+	//FUNÇÃO E TELA INICIAL
 	int opcao=0; //Criando variavél
 	int loop=1;
+	char senhadigitada[30] = "a";
 	
+	
+	while(1){
+		system("cls"); //LIMPAR TELA
+		
+		printf("\t### Cartório da EBAC ###\n\n");
+		printf("Login de adminstrados\n\nDigite a sua senha: ");
+		scanf("%s", senhadigitada);
+		
+		int	comparacao = strcmp(senhadigitada, "admin");
+		
+		if (comparacao == 0) {
+			printf("Acesso Liberado");
+			break;
+		}else{
+			printf("Acesso Negado\n");
+			system("pause");
+		}
+	}
+	
+		
 	for(loop=1;loop=1;){
 	
 		system("cls"); //LIMPAR TELA
